@@ -48,7 +48,9 @@ date_to: dateTo
 });
 toast({
 title: "Бронирование создано",
-description: `Комната ${response.data.room_id} забронирована пользователем ${response.data.user_id} с ${format(new Date(response.data.date_from), 'dd.MM.yyyy', { locale: ru })} по ${format(new Date(response.data.date_to), 'dd.MM.yyyy', { locale: ru })}. Цена: ${response.data.price}₽`,
+description: `Комната ${response.data.room_id} забронирована пользователем ${response.data.user_id} с 
+${format(new Date(response.data.date_from), 'dd.MM.yyyy', { locale: ru })} по ${format(new Date(response.data.date_to), 
+'dd.MM.yyyy', { locale: ru })} на ${response.data.total_days} ночей. Цена: ${response.data.total_cost}₽`,
 status: "success",
 duration: 5000,
 isClosable: true,
