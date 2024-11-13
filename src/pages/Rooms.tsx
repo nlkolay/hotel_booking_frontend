@@ -38,7 +38,7 @@ const Rooms: React.FC = () => {
             <Heading fontSize="xl" mt={4}>
               {room.name}
             </Heading>
-            <Text mt={4}>${room.price}</Text>
+            <Text mt={4}>{room.price}₽</Text>
             <Text mt={4}>{room.services.join(", ")}</Text>
             <Text mt={4}>{room.description}</Text>
           </Box>
