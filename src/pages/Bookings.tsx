@@ -21,7 +21,7 @@ const Bookings: React.FC = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axiosInstance.get<BookingResponse[]>(
-          "/bookings",
+          "/bookings/",
           {
             headers: {
               Authorization: `Bearer ${token}`,
