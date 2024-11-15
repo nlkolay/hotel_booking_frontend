@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-baseURL: "http://localhost:8000/",
+baseURL: "https://booking-app-7ug2.onrender.com/",
 withCredentials: true,
 headers: {
 "Content-Type": "application/json",
