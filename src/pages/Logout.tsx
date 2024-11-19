@@ -8,7 +8,7 @@ const Logout = () => {
   const toast = useToast();
 
   useEffect(() => {
-    axiosInstance.post("/auth/logout");
+    axiosInstance.post("/auth/logout", {}, { withCredentials: true });
     
     // Отображаем уведомление
     toast({

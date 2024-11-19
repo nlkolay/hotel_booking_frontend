@@ -9,9 +9,7 @@ const Account = () => {
   useEffect(() => {
     const fetchAccount = async () => {
       try {
-        const response = await axiosInstance.get("/auth/account", {
-          withCredentials: true, // Убедитесь, что куки отправляются с запросом
-      });
+        const response = await axiosInstance.get("/auth/account");
         setUser(response.data);
       } catch (error) {
         console.error("Failed to fetch account details", error);
