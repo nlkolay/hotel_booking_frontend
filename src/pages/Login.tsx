@@ -12,13 +12,13 @@ const navigate = useNavigate();
 const onSubmit = async (data: Record<string, string>) => {
 try {
 const response = await axiosInstance.post("/auth/login", data);
-setCookie("token", response.data.token, {
-    sameSite: 'None', // not secure!!!
-    path: '/', 
-    expires: new Date(Date.now() + 1800000), 
-    httpOnly: true,
-    secure: true,
- });
+// setCookie("token", response.data.token, {
+//     sameSite: 'None', // not secure!!!
+//     path: '/', 
+//     expires: new Date(Date.now() + 1800000), 
+//     httpOnly: true,
+//     secure: true,
+//  });
 toast({
 title: "Login successful.",
 status: "success",
