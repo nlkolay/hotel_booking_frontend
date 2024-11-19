@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Box, Button, FormControl, FormLabel, Input, useToast } from "@chakra-ui/react";
+import { Box, Button, Flex, FormControl, FormLabel, Input, useToast } from "@chakra-ui/react";
 import axiosInstance from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
@@ -28,21 +28,28 @@ isClosable: true,
 }
 };
 
+
 return (
-    <Box p={5}>
-    <form onSubmit={handleSubmit(onSubmit)}>
-    <FormControl>
-    <FormLabel>Адрес электронной почты</FormLabel> {/* Translated "Email" */}
-    <Input type="email" {...register("email", { required: "Это поле обязательно" })} /> {/* Translated "Email is required" */}
-    </FormControl>
-    <FormControl>
-    <FormLabel>Пароль</FormLabel> {/* Translated "Password" */}
-    <Input type="password" {...register("password", { required: true })} />
-    </FormControl>
-    <Button mt={4} colorScheme="teal" type="submit">Войти</Button> {/* Translated "Login" */}
-    </form>
-    </Box>
-    );
-    };
+    <Flex
+        align="center"
+        justify="center"
+        height="100vh" // Занять всю высоту экрана
+    >
+        <Box p={5} width="100%" maxWidth="400px"> {/* Ограничение ширины формы */}
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <FormControl>
+                    <FormLabel>Адрес электронной почты</FormLabel>
+                    <Input type="email" {...register("email", { required: "Это поле обязательно" })} />
+                </FormControl>
+                <FormControl mt={4}>
+                    <FormLabel>Пароль</FormLabel>
+                    <Input type="password" {...register("password", { required: true })} />
+                </FormControl>
+                <Button mt={4} colorScheme="teal" type="submit">Войти</Button>
+            </form>
+        </Box>
+    </Flex>
+);
+};
 
 export default Login;
