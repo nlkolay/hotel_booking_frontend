@@ -12,7 +12,8 @@ const onSubmit = async (data: Record<string, string>) => {
 try {
 const response = await axiosInstance.post("/auth/register", data);
 toast({
-title: response.data.message || "Регистрация прошла успешно.", // Translated "Registration successful."
+title: response.data.message || "Регистрация прошла успешно.", 
+description: "Теперь вы можете авторизоваться.",
 status: "success",
 duration: 2000,
 isClosable: true,
@@ -21,7 +22,7 @@ await axiosInstance.post("/auth/logout");
 navigate("/login");
 } catch (error) {
 toast({
-title: "Ошибка регистрации.", // Translated "Registration failed."
+title: "Ошибка регистрации.", 
 status: "error",
 duration: 2000,
 isClosable: true,

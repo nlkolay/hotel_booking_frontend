@@ -9,12 +9,9 @@ const Account = () => {
   useEffect(() => {
     const fetchAccount = async () => {
       try {
-        const token = localStorage.getItem("token");
         const response = await axiosInstance.get("/auth/account", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+          withCredentials: true, // Убедитесь, что куки отправляются с запросом
+      });
         setUser(response.data);
       } catch (error) {
         console.error("Failed to fetch account details", error);

@@ -19,15 +19,9 @@ const Bookings: React.FC = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const token = localStorage.getItem("token");
-        const response = await axiosInstance.get<BookingResponse[]>(
-          "/bookings/",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axiosInstance.get<BookingResponse[]>("/bookings/", {
+          withCredentials: true, // Убедитесь, что куки отправляются с запросом
+      });
         setBookings(response.data);
       } catch (error) {
         toast({
@@ -45,11 +39,8 @@ const Bookings: React.FC = () => {
 
   const handleDeleteBooking = async (bookingId: number) => {
     try {
-      const token = localStorage.getItem("token");
       await axiosInstance.delete(`/bookings/${bookingId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        withCredentials: true, // Убедитесь, что куки отправляются с запросом
       });
       setBookings(
         bookings.filter((booking) => booking.Bookings.id !== bookingId)

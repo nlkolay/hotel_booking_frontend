@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Box, Button, Flex, FormControl, FormLabel, Input, useToast } from "@chakra-ui/react";
 import axiosInstance from "../api/axios";
 import { useNavigate } from "react-router-dom";
+import { setCookie } from 'typescript-cookie'
 
 const Login = () => {
 const { register, handleSubmit } = useForm();
@@ -10,7 +11,14 @@ const navigate = useNavigate();
 
 const onSubmit = async (data: Record<string, string>) => {
 try {
-await axiosInstance.post("/auth/login", data);
+const response = await axiosInstance.post("/auth/login", data);
+setCookie("token", response.data.token, {
+    sameSite: 'None', // not secure!!!
+    path: '/', 
+    expires: new Date(Date.now() + 1800000), 
+    httpOnly: true,
+    secure: true,
+ });
 toast({
 title: "Login successful.",
 status: "success",
