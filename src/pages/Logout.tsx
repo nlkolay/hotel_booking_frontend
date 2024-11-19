@@ -8,18 +8,34 @@ const Logout = () => {
   const toast = useToast();
 
   useEffect(() => {
-    axiosInstance.post("/auth/logout", {}, { withCredentials: true });
-    
-    // Отображаем уведомление
-    toast({
-      title: "Вы вышли из профиля.",
-      status: "success",
-      duration: 2000,
-      isClosable: true,
-    });
-    
-    // Перенаправление на страницу входа
-    navigate("/login");
+    const logout = async () => {
+      try {
+        // Отправляем запрос на выход с withCredentials
+        await axiosInstance.post("/auth/logout", {}, { withCredentials: true });
+
+        // Отображаем уведомление
+        toast({
+          title: "Вы вышли из профиля.",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+
+        // Перенаправление на страницу входа
+        navigate("/login");
+      } catch (error) {
+        console.error("Logout failed:", error);
+        toast({
+          title: "Ошибка выхода.",
+          description: "Не удалось выйти из профиля.",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+      }
+    };
+
+    logout();
   }, [navigate, toast]);
 
   return null;
